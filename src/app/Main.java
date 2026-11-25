@@ -1,12 +1,16 @@
+package app;
+
+import data.Command;
+import model.Animal;
+import model.Cat;
+import model.Dog;
+import model.Duck;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-
-    enum Command {
-        ADD, LIST, EXIT
-    }
 
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<Animal> animals = new ArrayList<>();
@@ -14,6 +18,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Добро пожаловать! Доступные команды: add / list / exit");
         while (true) {
+            System.out.println("Введите команду (add / list / exit):");
             Command command = readCommand();
             switch (command) {
                 case ADD:
@@ -79,7 +84,12 @@ public class Main {
     private static int readInt() {
         while (true) {
             try {
-                return Integer.parseInt(scanner.nextLine().trim());
+                int value = Integer.parseInt(scanner.nextLine().trim());
+                if (value < 0) {
+                    System.out.println("Значение не может быть отрицательным, попробуйте ещё раз:");
+                    continue;
+                }
+                return value;
             } catch (NumberFormatException e) {
                 System.out.println("Нужно целое число, попробуйте ещё раз:");
             }

@@ -1,4 +1,6 @@
-public class Animal {
+package model;
+
+public abstract class Animal {
 
     private String name;
     private int age;
@@ -37,9 +39,7 @@ public class Animal {
         this.color = color;
     }
 
-    public void say() {
-        System.out.println("Я говорю");
-    }
+    public abstract void say();
 
     public void go() {
         System.out.println("Я иду");
